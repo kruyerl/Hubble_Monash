@@ -1,0 +1,154 @@
+﻿/* app.css
+ * Hubble Africa default screen styling ...
+ **/
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.tmg-wrapper {
+	width: 1146px;
+	height: 670px;
+	position: fixed;
+	overflow: hidden;
+}
+
+input,
+button:focus {
+	outline: none;
+}
+
+span {
+	transform: translate3d(0, 0, 0);
+	-webkit-transform: translate3d(0, 0, 0);
+}
+
+/* Default Swiper Slides Styling */
+.swiper-slide {
+	height: 670px;
+}
+
+/* Default Animations */
+.animated {
+	animation-fill-mode: both;
+	-webkit-animation-fill-mode: both;
+}
+
+/* Landing Page - Slide 0 */
+
+#home-section {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1146px;
+	height: 670px;
+	z-index: 8;
+}
+.navs.homePageCard {
+	position: absolute;
+	bottom: 20px;
+	width: 351px;
+	height: 298px;
+}
+.navs.homePageCard.openDay {
+	right: 24px;
+	top: 24px;
+	height: 62px;
+	width: 348px;
+	background: url('./../img/1\ Home/Open Day Button.png');
+}
+.navs.homePageCard.courses {
+	left: 20px;
+	background: url('./../img/1\ Home/1 View Courses.jpg');
+}
+.navs.homePageCard.about {
+	right: 396px;
+	background: url('./../img/1\ Home/2 About Monash.jpg');
+}
+.navs.homePageCard.gallery {
+	right: 20px;
+	background: url('./../img/1\ Home/3 Gallery.jpg');
+}
+
+/* #########################*/
+.back {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	top: 16px;
+	left: 16px;
+	background: url('../img/3\ Courses/Back Button.png');
+	z-index: 20;
+}
+.back.openDay {
+	background: transparent;
+}
+
+.swiper-pagination {
+	bottom: 30px !important;
+}
+
+/* Form Page - SLide 3 */
+
+#form-bg {
+	position: absolute;
+	top: -53px;
+	left: -107px;
+	width: 1364px;
+	height: 872px;
+	text-align: center;
+}
+
+#form {
+	position: absolute;
+	width: 1146px;
+	height: 670px;
+	top: 0px;
+	left: 0px;
+	background: url(../img/3-form/form.png) no-repeat;
+	background-position: center !important;
+}
+
+#submit {
+	position: absolute;
+	top: 514px;
+	left: 588px;
+	width: 471px;
+	height: 96px;
+	z-index: 15;
+	background: transparent;
+	border: solid 6px transparent !important;
+	background-repeat: no-repeat !important;
+	font-size: 0pt;
+	/* background: url(../img/3-form/submitted.png); */
+	background-position: center !important;
+}
+
+#email {
+	position: absolute;
+	top: 390px;
+	left: 590px;
+	width: 411px;
+	padding: 2px 12px 0 34px;
+	margin: 0 0 0 0;
+	height: 71px;
+	z-index: 15;
+	border-radius: 6px;
+	border: solid 6px transparent;
+	background: transparent;
+	font-size: 23pt;
+	font-weight: 500;
+	color: #333331;
+}
+
+/*Video Section*/
+#video-section {
+	position: absolute;
+	top: 0px;
+	left: 0;
+	width: 1146px;
+	height: 670px;
+	z-index: 25;
+	opacity: 0;
+	display: none;
+}
