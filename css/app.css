@@ -28,10 +28,38 @@ span {
 	height: 670px;
 }
 
+.swiper-pagination-bullet {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	border-radius: 100%;
+	background: #fff;
+	opacity: 0.8;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	outline: none;
+}
+.swiper-pagination-bullet-active {
+	opacity: 1;
+	background: #991000;
+}
 /* Default Animations */
 .animated {
 	animation-fill-mode: both;
 	-webkit-animation-fill-mode: both;
+}
+
+/* Back Button Styling*/
+.back {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	top: 16px;
+	left: 16px;
+	background: url('../img/3\ Courses/Back Button.png');
+	z-index: 20;
+}
+.back.openDay {
+	background: transparent;
 }
 
 /* Landing Page - Slide 0 */
@@ -50,7 +78,8 @@ span {
 	width: 351px;
 	height: 298px;
 }
-.navs.homePageCard.openDay {
+.homePageCard.openDay {
+	position: absolute;
 	right: 24px;
 	top: 24px;
 	height: 62px;
@@ -70,22 +99,52 @@ span {
 	background: url('./../img/1\ Home/3 Gallery.jpg');
 }
 
-/* #########################*/
-.back {
-	position: absolute;
-	width: 80px;
-	height: 80px;
-	top: 16px;
-	left: 16px;
-	background: url('../img/3\ Courses/Back Button.png');
-	z-index: 20;
-}
-.back.openDay {
-	background: transparent;
-}
-
 .swiper-pagination {
 	bottom: 30px !important;
+}
+
+/* Gallery */
+.cmp-gallery {
+	transition: all 400ms ease;
+	opacity: 0;
+	pointer-events: none;
+	background: url('./../img/5\ Gallery/1.jpg');
+}
+.cmp-gallery.swiper-slide-active {
+	opacity: 1;
+	pointer-events: all;
+}
+
+#gallery-section .arrows {
+	position: absolute;
+	background: url('./../img/5\ Gallery/ARROW.png');
+	bottom: 316px;
+	width: 1043px;
+	height: 41px;
+	left: 50px;
+	z-index: 8;
+}
+.next-gal {
+	position: absolute;
+	background: transparent;
+	bottom: 180px;
+	width: 250px;
+	height: 300px;
+	right: 0px;
+	z-index: 9;
+}
+.prev-gal {
+	position: absolute;
+	background: transparent;
+	bottom: 180px;
+	width: 250px;
+	height: 300px;
+	left: 0px;
+	z-index: 9;
+}
+.prev-gal:focus,
+.next-gal:focus {
+	outline: -webkit-focus-ring-color auto 0px;
 }
 
 /* Form Page - SLide 3 */
@@ -143,6 +202,17 @@ span {
 
 /*Video Section*/
 #video-section {
+	position: absolute;
+	top: 0px;
+	left: 0;
+	width: 1146px;
+	height: 670px;
+	z-index: 25;
+	opacity: 0;
+	display: none;
+}
+/*Video Section*/
+#openDay-section {
 	position: absolute;
 	top: 0px;
 	left: 0;

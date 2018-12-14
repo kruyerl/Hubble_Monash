@@ -1,15 +1,22 @@
 var Images = []
 
 var Channel = {
+	// Interface Gallery
 	InterfaceID: '#interface',
 	Interface: 0,
 	InitialSlide: 1,
 	InterfaceIndex: 0,
 
+	// Gallery Page Gallery
+	galleryID: '#gallery-section',
+	gallery: 0,
+	galleryIndex: 0,
+	galleryInactive: true,
+
 	Initialize: function() {
 		this.Interface = new Swiper(Channel.InterfaceID, {
-			speed: 200,
-			noSwiping: false,
+			speed: 400,
+			noSwiping: true,
 			initialSlide: this.InitialSlide,
 			noSwipingClass: 'disable-swipe',
 			on: {
@@ -32,6 +39,41 @@ var Channel = {
 				},
 			},
 		})
+
+		this.gallery = new Swiper(Channel.galleryID, {
+			speed: 200,
+			noSwiping: false,
+			noSwipingClass: 'disable-swipe',
+			loop: true,
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+			navigation: {
+				nextEl: '.next-gal',
+				prevEl: '.prev-gal',
+			},
+			on: {
+				transitionStart: function() {
+					Channel.galleryIndex = Channel.gallery.activeIndex
+					var activeSlide = Channel.galleryIndex + 1
+
+					if (Channel.galleryIndex == 0) {
+						hubapi.jsonStats(CONTENT_TYPE_PLAIN_TEXT, {
+							type: 'slide',
+							content_id: 'VLVSAB181127',
+							event: 'viewed',
+						})
+					} else if (Channel.galleryIndex == 1) {
+						hubapi.jsonStats(CONTENT_TYPE_PLAIN_TEXT, {
+							type: 'slide',
+							content_id: 'VLVSAC181127',
+							event: 'viewed',
+						})
+					}
+				},
+			},
+		})
 	},
 }
 
@@ -45,6 +87,9 @@ var APP = {
 	exitOpenDay: $('#exitOpenDay'),
 	exitCourses: $('#exitCourses'),
 	exitGallery: $('#exitGallery'),
+	gallerySection: $('#gallery-section'),
+	openDayBtn: $('#openDayBtn'),
+	openDaySection: $('#openDay-section'),
 	form: $('#name, #number, #email, #dealers'),
 
 	Initialize: function() {
@@ -65,9 +110,12 @@ var APP = {
 		$(APP.video).on('ended', function() {
 			APP.endedVideo()
 		})
-
+		openDayBtn
+		this.openDayBtn.on('click', function() {
+			APP.toggleOpenDayOpen()
+		})
 		this.exitOpenDay.on('click', function() {
-			APP.navigationSelected(5)
+			APP.toggleOpenDayClosed()
 		})
 
 		this.exitCourses.on('click', function() {
@@ -76,6 +124,7 @@ var APP = {
 
 		this.exitGallery.on('click', function() {
 			APP.navigationSelected(5)
+			Channel.gallery.slideTo(1)
 		})
 
 		this.closeVid.on('click', function() {
@@ -106,18 +155,38 @@ var APP = {
 
 	navigationSelected: function(nav) {
 		if (nav == 1) {
-			Channel.Interface.slideTo(2)
 		} else if (nav == 2) {
 			Channel.Interface.slideTo(0)
 		} else if (nav == 3) {
 			APP.playVideo()
 		} else if (nav == 4) {
-			Channel.Interface.slideTo(3)
+			Channel.Interface.slideTo(2)
 		} else if (nav == 5) {
 			Channel.Interface.slideTo(1)
 		}
 	},
-
+	toggleOpenDayOpen: function() {
+		APP.openDaySection.velocity(
+			{ opacity: 1 },
+			{ delay: 400, duration: 700, display: 'block' }
+		)
+		hubapi.jsonStats(CONTENT_TYPE_PLAIN_TEXT, {
+			type: 'video',
+			content_id: 'VLVVAA181127',
+			event: 'started',
+		})
+	},
+	toggleOpenDayClosed: function() {
+		APP.openDaySection.velocity(
+			{ opacity: 0 },
+			{ delay: 400, duration: 700, display: 'none' }
+		)
+		hubapi.jsonStats(CONTENT_TYPE_PLAIN_TEXT, {
+			type: 'video',
+			content_id: 'VLVVAA181127',
+			event: 'started',
+		})
+	},
 	playVideo: function() {
 		APP.video.play()
 		APP.videoSection.velocity(

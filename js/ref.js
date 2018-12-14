@@ -87,48 +87,6 @@ var Channel = {
 							content_id: 'VLVSAC181127',
 							event: 'viewed',
 						})
-					} else if (Channel.galleryIndex == 2) {
-						hubapi.jsonStats(CONTENT_TYPE_PLAIN_TEXT, {
-							type: 'slide',
-							content_id: 'VLVSAD181127',
-							event: 'viewed',
-						})
-					} else if (Channel.galleryIndex == 3) {
-						hubapi.jsonStats(CONTENT_TYPE_PLAIN_TEXT, {
-							type: 'slide',
-							content_id: 'VLVSAE181127',
-							event: 'viewed',
-						})
-					} else if (Channel.galleryIndex == 4) {
-						hubapi.jsonStats(CONTENT_TYPE_PLAIN_TEXT, {
-							type: 'slide',
-							content_id: 'VLVSAF181127',
-							event: 'viewed',
-						})
-					} else if (Channel.galleryIndex == 5) {
-						hubapi.jsonStats(CONTENT_TYPE_PLAIN_TEXT, {
-							type: 'slide',
-							content_id: 'VLVSAG181127',
-							event: 'viewed',
-						})
-					} else if (Channel.galleryIndex == 6) {
-						hubapi.jsonStats(CONTENT_TYPE_PLAIN_TEXT, {
-							type: 'slide',
-							content_id: 'VLVSAH181127',
-							event: 'viewed',
-						})
-					} else if (Channel.galleryIndex == 7) {
-						hubapi.jsonStats(CONTENT_TYPE_PLAIN_TEXT, {
-							type: 'slide',
-							content_id: 'VLVSAI181127',
-							event: 'viewed',
-						})
-					} else if (Channel.galleryIndex == 8) {
-						hubapi.jsonStats(CONTENT_TYPE_PLAIN_TEXT, {
-							type: 'slide',
-							content_id: 'VLVSAJ181127',
-							event: 'viewed',
-						})
 					}
 				},
 			},
@@ -500,7 +458,17 @@ var APP = {
 			}
 		}
 	},
-
+	toggleOpenDay: function() {
+		APP.openDaySection.velocity(
+			{ opacity: 1 },
+			{ delay: 400, duration: 700, display: 'block' }
+		)
+		hubapi.jsonStats(CONTENT_TYPE_PLAIN_TEXT, {
+			type: 'video',
+			content_id: 'VLVVAA181127',
+			event: 'started',
+		})
+	},
 	playVideo: function() {
 		APP.video.play()
 		APP.videoSection.velocity(
