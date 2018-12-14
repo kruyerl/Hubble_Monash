@@ -23,7 +23,148 @@
 					<!-- Courses Page - Slide 0 -->
 					<div class="swiper-slide cmp-courses disable-swipe">
 						<span id="exitCourses" class="back"></span>
-						<h1 class="navs" data-navs="0">courses</h1>
+						<img
+							class="courseContextImg"
+							src="./img/3 Courses/Select a course.png"
+							alt=""
+						/>
+						<section class="courseNavContainer">
+							<div
+								id="courseNav-cert"
+								data-coursenavkey="1"
+								class=" courseNav courseNavImg active"
+							>
+								&nbsp;
+							</div>
+							<div
+								id="courseNav-dipl"
+								data-coursenavkey="2"
+								class=" courseNav courseNavImg"
+							>
+								&nbsp;
+							</div>
+							<div
+								id="courseNav-bach"
+								data-coursenavkey="3"
+								class=" courseNav courseNavImg"
+							>
+								&nbsp;
+							</div>
+							<div
+								id="courseNav-post"
+								data-coursenavkey="4"
+								class=" courseNav courseNavImg"
+							>
+								&nbsp;
+							</div>
+							<div
+								id="courseNav-mast"
+								data-coursenavkey="5"
+								class=" courseNav courseNavImg"
+							>
+								&nbsp;
+							</div>
+						</section>
+						<section class="coursesMainContainer">
+							<!-- Swiper -->
+							<div id="CourseOuterSlide" class="swiper-container">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide">
+										<img
+											class="coursesCard"
+											data-coursekey="1"
+											src="./img/3 Courses/1.1.jpg"
+											alt=""
+										/>
+									</div>
+									<div class="swiper-slide">
+										<img
+											class="coursesCard"
+											data-coursekey="2"
+											src="./img/3 Courses/2.1.jpg"
+											alt=""
+										/>
+									</div>
+									<div class="swiper-slide">
+										<img
+											class="coursesCard"
+											data-coursekey="3"
+											src="./img/3 Courses/3.1.jpg"
+											alt=""
+										/>
+									</div>
+									<div class="swiper-slide">
+										<!-- Swiper -->
+										<div id="CourseInnerSlide" class="swiper-container">
+											<div class="swiper-wrapper">
+												<div class="swiper-slide">
+													<img
+														class="coursesCard"
+														data-coursekey="4"
+														src="./img/3 Courses/4.1.jpg"
+														alt=""
+													/>
+												</div>
+												<div class="swiper-slide">
+													<img
+														class="coursesCard"
+														data-coursekey="5"
+														src="./img/3 Courses/4.2.jpg"
+														alt=""
+													/>
+												</div>
+												<div class="swiper-slide">
+													<img
+														class="coursesCard"
+														data-coursekey="6"
+														src="./img/3 Courses/4.3.jpg"
+														alt=""
+													/>
+												</div>
+												<div class="swiper-slide">
+													<img
+														class="coursesCard"
+														data-coursekey="7"
+														src="./img/3 Courses/4.4.jpg"
+														alt=""
+													/>
+												</div>
+												<div class="swiper-slide">
+													<img
+														class="coursesCard"
+														data-coursekey="8"
+														src="./img/3 Courses/4.5.jpg"
+														alt=""
+													/>
+												</div>
+												<div class="swiper-slide">
+													<img
+														class="coursesCard"
+														data-coursekey="9"
+														src="./img/3 Courses/4.6.jpg"
+														alt=""
+													/>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<img
+											class="coursesCard"
+											data-coursekey="10"
+											src="./img/3 Courses/5.1.jpg"
+											alt=""
+										/>
+										<img
+											class="coursesCard lastCard"
+											data-coursekey="12"
+											src="./img/3 Courses/5.2.jpg"
+											alt=""
+										/>
+									</div>
+								</div>
+							</div>
+						</section>
 					</div>
 					<!-- Landing Page - Slide 1 -->
 					<div class="swiper-slide cmp-landing disable-swipe">
@@ -105,11 +246,6 @@
 							</div>
 							<div class="swiper-pagination"></div>
 
-							<section id="gallery-top">
-								<span class="gal-btns gal-home" data-gals="home"></span>
-								<span class="gal-btns gal-test" data-gals="test"></span>
-							</section>
-
 							<div class="arrows"></div>
 							<div class="prev-gal"></div>
 							<div class="next-gal"></div>
@@ -142,10 +278,20 @@
 				<!-- <span class="submitted"></span> -->
 			</section>
 
-			<!-- Video Section -->
+			<!-- Open Day Section -->
 			<section id="openDay-section">
 				<span id="exitOpenDay" class="back openDay"></span>
 				<img src="./img/2 Open Day/Open Day.jpg" alt="" />
+			</section>
+			<!-- CourseInfo Section -->
+			<section id="courseInfo-section">
+				<span id="exitCourseInfo" class="back courseInfo"></span>
+				<span id="moreInfoBtn" class="back courseInfo"></span>
+				<img
+					id="courseInfoImg"
+					src="./img/3 Courses/Information Pages/1.1.jpg"
+					alt=""
+				/>
 			</section>
 		</div>
 

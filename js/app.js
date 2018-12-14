@@ -1,4 +1,16 @@
-var Images = []
+const CourseImagesArr = [
+	'./img/3 Courses/Information Pages/1.1.jpg',
+	'./img/3 Courses/Information Pages/2.1.jpg',
+	'./img/3 Courses/Information Pages/3.1.jpg',
+	'./img/3 Courses/Information Pages/4.1.jpg',
+	'./img/3 Courses/Information Pages/4.2.jpg',
+	'./img/3 Courses/Information Pages/4.3.jpg',
+	'./img/3 Courses/Information Pages/4.4.jpg',
+	'./img/3 Courses/Information Pages/4.5.jpg',
+	'./img/3 Courses/Information Pages/4.6.jpg',
+	'./img/3 Courses/Information Pages/5.1.jpg',
+	'./img/3 Courses/Information Pages/5.2.jpg',
+]
 
 var Channel = {
 	// Interface Gallery
@@ -12,6 +24,17 @@ var Channel = {
 	gallery: 0,
 	galleryIndex: 0,
 	galleryInactive: true,
+
+	// courses Page courses
+	CourseOuterSlideID: '#CourseOuterSlide',
+	CourseOuterSlide: 0,
+	CourseOuterSlideIndex: 0,
+	CourseOuterSlideInactive: true,
+	// courses Inner
+	CourseInnerSlideID: '#CourseInnerSlide',
+	CourseInnerSlide: 0,
+	CourseInnerSlideIndex: 0,
+	CourseInnerSlideInactive: true,
 
 	Initialize: function() {
 		this.Interface = new Swiper(Channel.InterfaceID, {
@@ -56,7 +79,7 @@ var Channel = {
 			on: {
 				transitionStart: function() {
 					Channel.galleryIndex = Channel.gallery.activeIndex
-					var activeSlide = Channel.galleryIndex + 1
+					var activeSlide = Channel.galleryIndex
 
 					if (Channel.galleryIndex == 0) {
 						hubapi.jsonStats(CONTENT_TYPE_PLAIN_TEXT, {
@@ -73,6 +96,19 @@ var Channel = {
 					}
 				},
 			},
+		})
+
+		this.CourseOuterSlide = new Swiper(Channel.CourseOuterSlideID, {
+			speed: 200,
+			noSwiping: false,
+			noSwipingClass: 'disable-swipe',
+			loop: true,
+			direction: 'vertical',
+		})
+		var CourseInnerSlide = new Swiper(Channel.CourseInnerSlideID, {
+			slidesPerView: 3,
+			spaceBetween: 30,
+			loop: true,
 		})
 	},
 }
@@ -91,6 +127,11 @@ var APP = {
 	openDayBtn: $('#openDayBtn'),
 	openDaySection: $('#openDay-section'),
 	form: $('#name, #number, #email, #dealers'),
+	courseNavs: $('.courseNav'),
+	courses: $('.coursesCard'),
+	courseInfoSection: $('#courseInfo-section'),
+	courseInfoImg: $('#courseInfoImg'),
+	exitCourseInfo: $('#exitCourseInfo'),
 
 	Initialize: function() {
 		APP.onload()
@@ -107,13 +148,26 @@ var APP = {
 			APP.navigationSelected(nav)
 		})
 
+		APP.courseNavs.on('click', function() {
+			var x = $(this).data('coursenavkey')
+			APP.courseNavigationSelected(x)
+			APP.toggleActive(this)
+		})
+		/*
+		APP.courses.on('click', function() {
+			var x = $(this).data('coursekey')
+			let resultImg = CourseImagesArr[x - 1]
+			APP.toggleCourseInfoSectionOpen(resultImg)
+		})*/
+
 		$(APP.video).on('ended', function() {
 			APP.endedVideo()
 		})
-		openDayBtn
+
 		this.openDayBtn.on('click', function() {
 			APP.toggleOpenDayOpen()
 		})
+
 		this.exitOpenDay.on('click', function() {
 			APP.toggleOpenDayClosed()
 		})
@@ -121,6 +175,10 @@ var APP = {
 		this.exitCourses.on('click', function() {
 			APP.navigationSelected(5)
 		})
+		/*
+		this.exitCourseInfo.on('click', function() {
+			APP.toggleCourseInfoSectionClosed()
+		})*/
 
 		this.exitGallery.on('click', function() {
 			APP.navigationSelected(5)
@@ -149,9 +207,7 @@ var APP = {
 		})
 	},
 
-	onload: function() {
-		APP.PreloadImages()
-	},
+	onload: function() {},
 
 	navigationSelected: function(nav) {
 		if (nav == 1) {
@@ -165,6 +221,48 @@ var APP = {
 			Channel.Interface.slideTo(1)
 		}
 	},
+
+	toggleActive: function(section) {
+		var sections = document.querySelectorAll('.courseNavImg')
+		for (i = 0; i < sections.length; i++) {
+			sections[i].classList.remove('active')
+		}
+		section.classList.add('active')
+	},
+
+	courseNavigationSelected: function(coursenavkey) {
+		if (coursenavkey == 1) {
+			Channel.CourseOuterSlide.slideTo(1)
+		} else if (coursenavkey == 2) {
+			Channel.CourseOuterSlide.slideTo(2)
+		} else if (coursenavkey == 3) {
+			Channel.CourseOuterSlide.slideTo(3)
+		} else if (coursenavkey == 4) {
+			Channel.CourseOuterSlide.slideTo(4)
+		} else if (coursenavkey == 5) {
+			Channel.CourseOuterSlide.slideTo(5)
+		}
+	},
+
+	/*toggleCourseInfoSectionOpen: function(srcUrl) {
+		let image = APP.courseInfoImg
+		image.src = srcUrl
+		APP.courseInfoSection.velocity(
+			{ opacity: 1 },
+			{ delay: 400, duration: 700, display: 'block' }
+		)
+	},
+	toggleCourseInfoSectionClosed: function() {
+		APP.courseInfoSection.velocity(
+			{ opacity: 0 },
+			{ delay: 400, duration: 700, display: 'none' }
+		)
+		hubapi.jsonStats(CONTENT_TYPE_PLAIN_TEXT, {
+			type: 'video',
+			content_id: 'VLVVAA181127',
+			event: 'started',
+		})
+	},*/
 	toggleOpenDayOpen: function() {
 		APP.openDaySection.velocity(
 			{ opacity: 1 },
@@ -228,17 +326,6 @@ var APP = {
 			content_id: 'Skipped Monash Video',
 			event: 'skipped',
 		})
-	},
-
-	PreloadImages: function() {
-		var url = 'img/2-features/wheels/'
-		var ext = '.jpg'
-		var img = new Image()
-
-		for (var i = 1; i <= 7; i++) {
-			img.src = url + i + ext
-			Images.push(img.src)
-		}
 	},
 
 	ValidateInput: function() {

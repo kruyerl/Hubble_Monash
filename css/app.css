@@ -147,6 +147,90 @@ span {
 	outline: -webkit-focus-ring-color auto 0px;
 }
 
+/* Courses */
+img.courseContextImg {
+	position: absolute;
+	top: 119px;
+	left: 368px;
+}
+section.courseNavContainer {
+	position: absolute;
+	left: 18px;
+	bottom: 120px;
+}
+section.coursesMainContainer {
+	height: 364px;
+	width: 780px;
+	position: absolute;
+	right: 0px;
+	bottom: 120px;
+	overflow: hidden;
+}
+#CourseOuterSlide .swiper-slide {
+	height: 364px;
+	width: 780px;
+	min-width: 314px;
+}
+
+.courseNavImg {
+	width: 318px;
+	height: 73px;
+}
+img.coursesCard.lastCard {
+	margin-left: 30px;
+}
+
+/* coursenav - states */
+#courseNav-cert {
+	background: url('./../img/3\ Courses/Navigation/White buttons/1.png');
+}
+#courseNav-cert.active {
+	background: url('./../img/3\ Courses/Navigation/Red buttons/1.png');
+}
+#courseNav-dipl {
+	background: url('./../img/3\ Courses/Navigation/White buttons/2.png');
+}
+#courseNav-dipl.active {
+	background: url('./../img/3\ Courses/Navigation/Red buttons/2.png');
+}
+#courseNav-bach {
+	background: url('./../img/3\ Courses/Navigation/White buttons/3.png');
+}
+#courseNav-bach.active {
+	background: url('./../img/3\ Courses/Navigation/Red buttons/3.png');
+}
+#courseNav-post {
+	background: url('./../img/3\ Courses/Navigation/White buttons/4.png');
+}
+#courseNav-post.active {
+	background: url('./../img/3\ Courses/Navigation/Red buttons/4.png');
+}
+#courseNav-mast {
+	background: url('./../img/3\ Courses/Navigation/White buttons/5.png');
+}
+#courseNav-mast.active {
+	background: url('./../img/3\ Courses/Navigation/Red buttons/5.png');
+}
+
+/*Video Section*/
+#courseInfo-section {
+	position: absolute;
+	top: 0px;
+	left: 0;
+	width: 1146px;
+	height: 670px;
+	z-index: 25;
+	opacity: 0;
+	display: none;
+}
+
+span#moreInfoBtn {
+	left: 771px !important;
+	background: black;
+	position: absolute;
+	top: 243px;
+	width: 360px;
+}
 /* Form Page - SLide 3 */
 
 #form-bg {
