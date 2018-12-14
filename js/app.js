@@ -128,7 +128,7 @@ var APP = {
 	openDaySection: $('#openDay-section'),
 	form: $('#name, #number, #email, #dealers'),
 	courseNavs: $('.courseNav'),
-	courses: $('.coursesCard'),
+	courses: $('.courseCard'),
 	courseInfoSection: $('#courseInfo-section'),
 	courseInfoImg: $('#courseInfoImg'),
 	exitCourseInfo: $('#exitCourseInfo'),
@@ -153,12 +153,13 @@ var APP = {
 			APP.courseNavigationSelected(x)
 			APP.toggleActive(this)
 		})
-		/*
+
 		APP.courses.on('click', function() {
 			var x = $(this).data('coursekey')
-			let resultImg = CourseImagesArr[x - 1]
-			APP.toggleCourseInfoSectionOpen(resultImg)
-		})*/
+			//let resultImg = CourseImagesArr[x - 1]
+			console.log(x)
+			//APP.toggleCourseInfoSectionOpen(resultImg)
+		})
 
 		$(APP.video).on('ended', function() {
 			APP.endedVideo()

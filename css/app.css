@@ -176,7 +176,7 @@ section.coursesMainContainer {
 	width: 318px;
 	height: 73px;
 }
-img.coursesCard.lastCard {
+img.courseCard.lastCard {
 	margin-left: 30px;
 }
 
@@ -212,7 +212,7 @@ img.coursesCard.lastCard {
 	background: url('./../img/3\ Courses/Navigation/Red buttons/5.png');
 }
 
-/*Video Section*/
+/*courseInfo Section*/
 #courseInfo-section {
 	position: absolute;
 	top: 0px;
