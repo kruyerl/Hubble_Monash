@@ -226,7 +226,7 @@ img.courseCard.lastCard {
 
 span#moreInfoBtn {
 	left: 771px !important;
-	background: black;
+	background: transparent;
 	position: absolute;
 	top: 243px;
 	width: 360px;
@@ -240,48 +240,6 @@ span#moreInfoBtn {
 	width: 1364px;
 	height: 872px;
 	text-align: center;
-}
-
-#form {
-	position: absolute;
-	width: 1146px;
-	height: 670px;
-	top: 0px;
-	left: 0px;
-	background: url(../img/3-form/form.png) no-repeat;
-	background-position: center !important;
-}
-
-#submit {
-	position: absolute;
-	top: 514px;
-	left: 588px;
-	width: 471px;
-	height: 96px;
-	z-index: 15;
-	background: transparent;
-	border: solid 6px transparent !important;
-	background-repeat: no-repeat !important;
-	font-size: 0pt;
-	/* background: url(../img/3-form/submitted.png); */
-	background-position: center !important;
-}
-
-#email {
-	position: absolute;
-	top: 390px;
-	left: 590px;
-	width: 411px;
-	padding: 2px 12px 0 34px;
-	margin: 0 0 0 0;
-	height: 71px;
-	z-index: 15;
-	border-radius: 6px;
-	border: solid 6px transparent;
-	background: transparent;
-	font-size: 23pt;
-	font-weight: 500;
-	color: #333331;
 }
 
 /*Video Section*/
@@ -305,4 +263,67 @@ span#moreInfoBtn {
 	z-index: 25;
 	opacity: 0;
 	display: none;
+}
+
+/*Form Section*/
+#form-section {
+	position: absolute;
+	background: url('../img/4\ Form/Form bg.jpg');
+	top: 0px;
+	left: 0;
+	width: 1146px;
+	height: 670px;
+	z-index: 30;
+	opacity: 0;
+	display: none;
+}
+img.formContext {
+	position: absolute;
+	top: 60px;
+	left: 290px;
+}
+img.form {
+	position: absolute;
+	top: 190px;
+	left: 230px;
+}
+#form {
+	position: absolute;
+	width: 1146px;
+	height: 670px;
+	top: 0px;
+	left: 0px;
+	/*background: url(../img/3-form/form.png) no-repeat;*/
+	background-position: center !important;
+}
+#email {
+	position: absolute;
+	top: 190px;
+	left: 230px;
+	width: 402px;
+	padding: 2px 12px 0 34px;
+	margin: 0 0 0 0;
+	height: 56px;
+	z-index: 15;
+	border-radius: 6px;
+	border: solid 6px transparent;
+	background: transparent;
+	font-size: 23pt;
+	font-weight: 500;
+	color: #333331;
+}
+#submit {
+	position: absolute;
+	top: 190px;
+	left: 710px;
+	width: 202px;
+	height: 67px;
+	z-index: 35;
+	background: transparent;
+	border: solid 6px transparent;
+	background-repeat: no-repeat !important;
+	font-size: 0pt;
+	pointer-events: auto;
+	/* background: url(../img/3-form/submitted.png); */
+	background-position: center !important;
 }

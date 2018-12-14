@@ -293,6 +293,22 @@
 					alt=""
 				/>
 			</section>
+			<!-- Form Section -->
+			<section id="form-section">
+				<span id="exitForm" class="back"></span>
+				<div>
+					<img
+						class="formContext"
+						src="./img/4 Form/Enter your email to.png"
+						alt=""
+					/>
+					<img class="form" src="./img/4 Form/Form.png" alt="" />
+				</div>
+				<form id="form">
+					<input type="email" id="email" placeholder=" ">
+					<input type="button" id="submit">
+				</form>
+			</section>
 		</div>
 
 		<!-- Scripts -->
@@ -306,78 +322,47 @@
 		<script src="js/velocityUI.js"></script>
 		<script src="js/app.js"></script>
 
-		<!-- Taxi Interactive -->
-		<script>
-			/*----------  Taxi Utils (Form handling)  ----------*/
 
+
+    <!-- Taxi Interactive -->
+    <script>
+			/*----------  Taxi Utils (Form handling)  ----------*/
 			function clickHandler(event) {
 				try {
 					// DO NOT REMOVE OR MODIFY THIS CODE
-					event.preventDefault()
-					event.stopImmediatePropagation()
-					//alert('click handler!');
-
-					if ($('.checkbox')[0].checked == true) {
-						checkbox = 'ticked'
-					} else {
-						checkbox = 'unticked'
-					}
-
+					event.preventDefault();
+					event.stopImmediatePropagation();
+					alert('click handler!');
 					// fetch user input
-					var name = $('#name').val()
-					var num = $('#number').val()
-					var email = $('#email').val()
-					var dealer = $('#dealers').val()
-					var number = num.substr(1, 9)
-
+					var email = $('#email').val();
 					//this object should contain user input data
 					var transportObject = {
-						formName: 'VolvoV40',
-						name: name,
-						number: '+27' + number,
-						email: email,
-						dealer: dealer,
-						checkbox: checkbox,
-						carResults: JSON.stringify(APP.result),
-						fingerprint: Date.now(),
-					}
-
+						'formName':'Montash',
+						'email': email,
+						'fingerprint': Date.now()
+					};
 					// New API for saving user input data to main application
-
-					cabapi.uploadFormData(
-						CONTENT_TYPE_JSON,
-						JSON.stringify(transportObject)
-					)
-					console.log(transportObject)
+					cabapi.uploadFormData(CONTENT_TYPE_JSON, JSON.stringify(transportObject));
+					console.log(transportObject);
 
 					// AJAX Call
 					var settings = {
-						async: true,
-						crossDomain: true,
-						url:
-							'https://fvnk111k6l.execute-api.eu-central-1.amazonaws.com/v1_3/form',
-						method: 'POST',
-						headers: {
-							'content-type': 'application/json',
-						},
-						processData: false,
-						data: JSON.stringify(transportObject),
+					 "async": true,
+					 "crossDomain": true,
+					 "url": "https://fvnk111k6l.execute-api.eu-central-1.amazonaws.com/v1_3/form",
+					 "method": "POST",
+					 "headers": {
+					   "content-type": "application/json"
+					 },
+					 "processData": false,
+					 "data": JSON.stringify(transportObject)
 					}
-
-					$.ajax(settings)
-
-					APP.submit.css('pointer-events', 'none')
-
-					// hide form
-					setTimeout(function() {
-						Channel.Interface.slideTo(0)
-						$('#form')[0].reset()
-						APP.submit.css('pointer-events', 'auto')
-					}, 2500)
+					$.ajax(settings);
 				} catch (error) {
-					alert('Error sending stats to main app!')
+					alert("Error sending stats to main app!");
 				}
 			}
 		</script>
+
 	</body>
-</html>
+	</html>
