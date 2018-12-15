@@ -19,7 +19,7 @@ const REPORT_USER_ACTIVITY = 'report_user_activity'
 /**
  * global variables
  */
-var gDebugMode = false
+var gDebugMode = true
 var gImageID = 0
 var gObj = null
 

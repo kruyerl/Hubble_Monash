@@ -287,6 +287,12 @@ img.form {
 	top: 190px;
 	left: 230px;
 }
+img.successMsg {
+	position: absolute;
+	top: 84px;
+	left: 243px;
+	opacity: 0;
+}
 #form {
 	position: absolute;
 	width: 1146px;
@@ -320,10 +326,10 @@ img.form {
 	height: 67px;
 	z-index: 35;
 	background: transparent;
-	border: solid 6px transparent;
+	border: solid 6px transparent !important;
 	background-repeat: no-repeat !important;
 	font-size: 0pt;
-	pointer-events: auto;
+
 	/* background: url(../img/3-form/submitted.png); */
 	background-position: center !important;
 }

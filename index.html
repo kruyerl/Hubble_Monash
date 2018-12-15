@@ -253,16 +253,6 @@
 							<div class="gal-text"></div>
 						</section>
 					</div>
-
-					<!-- Form Options Page - Slide 4 -->
-					<div class="swiper-slide cmp-form disable-swipe">
-						<span class="back"></span>
-						<h1>Form</h1>
-						<form id="form">
-							<input type="email" id="email" placeholder=" " />
-							<input type="button" id="submit" />
-						</form>
-					</div>
 				</div>
 			</section>
 
@@ -303,10 +293,15 @@
 						alt=""
 					/>
 					<img class="form" src="./img/4 Form/Form.png" alt="" />
+					<img
+						class="successMsg"
+						src="./img/4 Form/Success Message.png"
+						alt=""
+					/>
 				</div>
 				<form id="form">
-					<input type="email" id="email" placeholder=" ">
-					<input type="button" id="submit">
+					<input type="email" id="email" placeholder=" " />
+					<input type="button" id="submit" />
 				</form>
 			</section>
 		</div>
@@ -322,47 +317,79 @@
 		<script src="js/velocityUI.js"></script>
 		<script src="js/app.js"></script>
 
-
-
-    <!-- Taxi Interactive -->
-    <script>
+		<!-- Taxi Interactive -->
+		<script>
 			/*----------  Taxi Utils (Form handling)  ----------*/
+
 			function clickHandler(event) {
 				try {
 					// DO NOT REMOVE OR MODIFY THIS CODE
-					event.preventDefault();
-					event.stopImmediatePropagation();
-					alert('click handler!');
+					event.preventDefault()
+					event.stopImmediatePropagation()
+					//alert('click handler!')
 					// fetch user input
-					var email = $('#email').val();
+
+					var email = $('#email').val()
+
 					//this object should contain user input data
 					var transportObject = {
-						'formName':'Montash',
-						'email': email,
-						'fingerprint': Date.now()
-					};
+						formName: 'Montash',
+						email: email,
+						fingerprint: Date.now(),
+					}
+					console.log(transportObject)
+
 					// New API for saving user input data to main application
-					cabapi.uploadFormData(CONTENT_TYPE_JSON, JSON.stringify(transportObject));
-					console.log(transportObject);
+
+					cabapi.uploadFormData(
+						CONTENT_TYPE_JSON,
+						JSON.stringify(transportObject)
+					)
 
 					// AJAX Call
 					var settings = {
-					 "async": true,
-					 "crossDomain": true,
-					 "url": "https://fvnk111k6l.execute-api.eu-central-1.amazonaws.com/v1_3/form",
-					 "method": "POST",
-					 "headers": {
-					   "content-type": "application/json"
-					 },
-					 "processData": false,
-					 "data": JSON.stringify(transportObject)
+						async: true,
+						crossDomain: true,
+						url:
+							'https://fvnk111k6l.execute-api.eu-central-1.amazonaws.com/v1_3/form',
+						method: 'POST',
+						headers: {
+							'content-type': 'application/json',
+						},
+						processData: false,
+						data: JSON.stringify(transportObject),
 					}
-					$.ajax(settings);
+
+					$.ajax(settings)
+
+					APP.submit.css('pointer-events', 'none')
+					$('.formContext').velocity(
+						{ opacity: 0, top: 200 },
+						{ delay: 100, duration: 300, display: 'none' }
+					)
+					$('.successMsg').velocity(
+						{ opacity: 1, top: 85 },
+						{ delay: 300, duration: 300, display: 'block' }
+					)
+					// hide form
+					setTimeout(function() {
+						Channel.Interface.slideTo(1)
+
+						APP.courseInfoSection.velocity(
+							{ opacity: 0 },
+							{ delay: 100, duration: 300, display: 'none' }
+						)
+						APP.formSection.velocity(
+							{ opacity: 0 },
+							{ delay: 400, duration: 700, display: 'none' }
+						)
+
+						APP.submit.css('pointer-events', 'auto')
+					}, 2500)
 				} catch (error) {
-					alert("Error sending stats to main app!");
+					alert('Error sending stats to main app!')
 				}
 			}
 		</script>
-
 	</body>
-	</html>
+</html>

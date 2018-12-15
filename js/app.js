@@ -92,7 +92,7 @@ var APP = {
 	moreInfoBtn: $('#moreInfoBtn'),
 
 	Initialize: function() {
-		APP.onload()
+		this.onload()
 		// Reporting 10 Seconds Interval
 		setInterval(function() {
 			hubapi.jsonStats(CONTENT_TYPE_PLAIN_TEXT, {
@@ -158,11 +158,10 @@ var APP = {
 				{ delay: 400, duration: 700, display: 'none' }
 			)
 		})
-		$('#submit').on('click', function() {
+		$('#submit').on('click', function(event) {
 			APP.ValidateInput()
 		})
 	},
-
 	onload: function() {},
 
 	navSelected: function(nav) {
@@ -240,17 +239,11 @@ var APP = {
 	},
 
 	ValidateInput: function() {
-		var Name = document.getElementById('name')
-		var Number_ = document.getElementById('number')
-		var Dealer = document.getElementById('dealers')
 		var Email = document.getElementById('email')
-		var Language = badwords.indexOf(Name.value)
 		var BorderRed = '6px solid red',
 			BorderDefault = '6px solid transparent'
-		var ValuesEmpty =
-			Name.value === '' || Number_.value === '' || Email.value === ''
-		var ValuesNotEmpty =
-			Name.value !== '' || Number_.value !== '' || Email.value !== ''
+		var ValuesEmpty = Email.value === ''
+		var ValuesNotEmpty = Email.value !== ''
 
 		if (ValuesEmpty) {
 			if (Email.value === '') APP.InputAction(Email)
@@ -258,6 +251,7 @@ var APP = {
 				if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(Email.value))
 					APP.InputAction(Email)
 			}
+
 			return false
 		} else if (ValuesNotEmpty) {
 			if (Email.value !== '') {
@@ -266,6 +260,8 @@ var APP = {
 				) {
 					APP.InputAction(Email)
 					return false
+				} else {
+					clickHandler(event)
 				}
 			}
 		} else {
