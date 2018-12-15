@@ -162,7 +162,24 @@ var APP = {
 			APP.ValidateInput()
 		})
 	},
-	onload: function() {},
+	onload: function() {
+		$('.homePageCard.courses').velocity(
+			{ opacity: 1, marginTop: 0 },
+			{ delay: 100, duration: 600, display: 'block' }
+		)
+		$('.homePageCard.about').velocity(
+			{ opacity: 1, marginTop: 0 },
+			{ delay: 200, duration: 600, display: 'block' }
+		)
+		$('.homePageCard.gallery').velocity(
+			{ opacity: 1, marginTop: 0 },
+			{ delay: 300, duration: 600, display: 'block' }
+		)
+		$('.homePageCard.openDay').velocity(
+			{ opacity: 1, top: 24 },
+			{ delay: 1500, duration: 300, display: 'block' }
+		)
+	},
 
 	navSelected: function(nav) {
 		if (nav == 1) {

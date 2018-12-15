@@ -81,20 +81,26 @@ span {
 .homePageCard.openDay {
 	position: absolute;
 	right: 24px;
-	top: 24px;
+	top: -70px;
 	height: 62px;
 	width: 348px;
 	background: url('./../img/1\ Home/Open Day Button.png');
 }
 .navs.homePageCard.courses {
+	margin-top: 50px;
+	opacity: 0;
 	left: 20px;
 	background: url('./../img/1\ Home/1 View Courses.jpg');
 }
 .navs.homePageCard.about {
+	margin-top: 50px;
+	opacity: 0;
 	right: 396px;
 	background: url('./../img/1\ Home/2 About Monash.jpg');
 }
 .navs.homePageCard.gallery {
+	margin-top: 50px;
+	opacity: 0;
 	right: 20px;
 	background: url('./../img/1\ Home/3 Gallery.jpg');
 }
@@ -153,6 +159,15 @@ img.courseContextImg {
 	top: 119px;
 	left: 368px;
 }
+span.blur {
+	position: absolute;
+	right: 0px;
+	height: 100%;
+	width: 60px;
+	z-index: 15;
+	box-shadow: inset -40px 0 36px -7px rgba(255, 255, 255, 0.8);
+}
+
 section.courseNavContainer {
 	position: absolute;
 	left: 18px;
